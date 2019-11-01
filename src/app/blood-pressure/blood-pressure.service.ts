@@ -15,7 +15,7 @@ export interface BloodPressure {
 export class BloodPressureService {
   constructor(private http: HttpClient) { }
 
-  bloodPressureApiUrl = 'v1/bloodpressure/';
+  bloodPressureApiUrl = 'https://healthmonitor-be.herokuapp.com/v1/bloodpressure/';
   
   getBloodPressure(uuid: string) {
     let fullEndpoint = this.bloodPressureApiUrl + uuid;
