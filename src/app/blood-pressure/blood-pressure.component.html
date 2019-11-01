@@ -1,0 +1,32 @@
+<h3>Blood Pressures
+    <button mat-icon-button (click)="showBloodPressure()" aria-label="Refresh">
+                <mat-icon>autorenew</mat-icon>
+    </button>
+</h3>
+<div>    
+    <table mat-table [dataSource]="bloodPressures" class="mat-elevation-z8" layout-align="center">
+       <!-- Date -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdOn | date}} </td>
+      </ng-container>
+      <!-- Systolic -->
+      <ng-container matColumnDef="systolic">
+        <th mat-header-cell *matHeaderCellDef> Systolic </th>
+        <td mat-cell *matCellDef="let element"> {{element.systolic}} </td>
+      </ng-container>
+      <!-- heartrate -->
+      <ng-container matColumnDef="heartrate">
+            <th mat-header-cell *matHeaderCellDef> Heart Rate </th>
+            <td mat-cell *matCellDef="let element"> {{element.heartrate}} </td>
+      </ng-container>
+      <!-- diastolic -->
+      <ng-container matColumnDef="diastolic">
+            <th mat-header-cell *matHeaderCellDef> diastolic </th>
+            <td mat-cell *matCellDef="let element"> {{element.diastolic}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
