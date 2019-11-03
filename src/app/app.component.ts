@@ -8,7 +8,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent implements OnInit{
 
-  constructor(private auth: AuthService) {}
+  constructor(public auth: AuthService) {}
 
   title = 'healthmonitor-fe';
 
