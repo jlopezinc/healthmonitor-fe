@@ -1,8 +1,26 @@
 <h3>Blood Pressures
     <button mat-icon-button (click)="showBloodPressure()" aria-label="Refresh">
-                <mat-icon>autorenew</mat-icon>
+            <mat-icon>autorenew</mat-icon>
+    </button>
+    <button mat-fab (click)="toogleBloodPressure()" aria-label="add-blood-pressure">
+            <mat-icon>add_circle</mat-icon>
     </button>
 </h3>
+<div *ngIf="showAddBloodPressurePanel">
+        <mat-form-field>
+           <input type="number" matInput placeholder="Systolic" [(ngModel)]="model.systolic">
+           <mat-hint>120</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="number" matInput placeholder="Diastolic" [(ngModel)]="model.diastolic">
+            <mat-hint>95</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="number" matInput placeholder="Heart Rate" [(ngModel)]="model.heartrate">
+            <mat-hint>60</mat-hint>
+        </mat-form-field>
+        <button mat-raised-button (click)="saveBloodPressure()">Save</button>
+</div>
 <div>    
     <table mat-table [dataSource]="bloodPressures" class="mat-elevation-z8" layout-align="center">
        <!-- Date -->

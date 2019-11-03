@@ -1,10 +1,13 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
         <button mat-icon-button>
-          <mat-icon>menu</mat-icon>
+          <mat-icon>menu</mat-icon>          
         </button>
+        <button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
+        <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
       </mat-toolbar-row>
 </mat-toolbar>
 
 <!-- blood pressures -->
 <app-blood-pressure></app-blood-pressure>
+<!--<router-outlet></router-outlet>-->

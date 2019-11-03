@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
-export interface BloodPressure {
+export class BloodPressure {
     systolic: number;
     diastolic: number;
     heartrate: number;
@@ -17,10 +17,14 @@ export class BloodPressureService {
 
   bloodPressureApiUrl = 'https://healthmonitor-be.herokuapp.com/v1/bloodpressure/';
   
-  getBloodPressure(uuid: string) {
-    let fullEndpoint = this.bloodPressureApiUrl + uuid;
-    return this.http.get<BloodPressure[]>(fullEndpoint)
+  getBloodPressure() {
+    return this.http.get<BloodPressure[]>(this.bloodPressureApiUrl)
       .pipe(catchError(this.handleError));
+  }
+
+  saveBloodPressure(bloodpressure: BloodPressure){
+    return this.http.post(this.bloodPressureApiUrl, bloodpressure)
+    .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

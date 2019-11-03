@@ -9,17 +9,33 @@ import { BloodPressure, BloodPressureService } from './blood-pressure.service';
     styles: ['.error {color: red;}']
   })
 export class BloodPressureComponent {
-    uuidInScope='dsadas';
     displayedColumns=['date', 'systolic', 'diastolic', 'heartrate']
     
     bloodPressures: BloodPressure[];
+    model: BloodPressure = new BloodPressure();
+    showAddBloodPressurePanel = false;
 
     constructor(private bloodPressureService: BloodPressureService) {
         this.bloodPressures = [];
     };
 
     showBloodPressure(){
-        this.bloodPressureService.getBloodPressure(this.uuidInScope)
+        this.bloodPressureService.getBloodPressure()
             .subscribe((data: BloodPressure[]) => this.bloodPressures = data)
+    }
+
+    toogleBloodPressure(){
+        this.showAddBloodPressurePanel = !this.showAddBloodPressurePanel;
+    }
+
+    saveBloodPressure(){
+        let data : BloodPressure = {
+            systolic: this.model.systolic,
+            diastolic: this.model.diastolic,
+            heartrate: this.model.heartrate,
+            createdOn: null
+        }
+        this.bloodPressureService.saveBloodPressure(data)
+            .subscribe(r => this.showBloodPressure);
     }
 }

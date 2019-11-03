@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatTableModule } from '@angular/material';
+import { MatTableModule, MatHint, MatInputModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { BloodPressureComponent } from './blood-pressure/blood-pressure.component';
@@ -14,6 +14,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AccountApiService } from './auth/account-api.service';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,8 @@ import { MatListModule } from '@angular/material/list';
   ],
   imports: [
     BrowserModule,
+    CoreModule,
+    AppRoutingModule,
     HttpClientModule,
     MatTableModule,
     BrowserAnimationsModule,
@@ -31,9 +37,11 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,    
+    FormsModule
   ],
-  providers: [],
+  providers: [AccountApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
