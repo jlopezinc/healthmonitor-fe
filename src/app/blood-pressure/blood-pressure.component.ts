@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { BloodPressure, BloodPressureService } from './blood-pressure.service';
 
 @Component({
@@ -8,7 +7,7 @@ import { BloodPressure, BloodPressureService } from './blood-pressure.service';
     providers: [ BloodPressureService ],
     styles: ['.error {color: red;}']
   })
-export class BloodPressureComponent {
+export class BloodPressureComponent implements OnInit {
     displayedColumns=['date', 'systolic', 'diastolic', 'heartrate']
     
     bloodPressures: BloodPressure[];
@@ -36,6 +35,13 @@ export class BloodPressureComponent {
             createdOn: null
         }
         this.bloodPressureService.saveBloodPressure(data)
-            .subscribe(r => this.showBloodPressure);
+            .subscribe(r => {
+                this.showAddBloodPressurePanel = false;
+                this.showBloodPressure();                
+            });
+    }
+
+    ngOnInit() {
+        this.showBloodPressure();
     }
 }

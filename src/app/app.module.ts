@@ -14,10 +14,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AccountApiService } from './auth/account-api.service';
 import { FormsModule }   from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { FormsModule }   from '@angular/forms';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatInputModule,    
+    MatInputModule,
+    MatCardModule,
     FormsModule
   ],
   providers: [AccountApiService],
