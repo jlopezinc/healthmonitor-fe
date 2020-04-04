@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { BloodPressure, BloodPressureService } from './blood-pressure.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { BloodPressureDatasource } from './blood-pressure.datasource';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-blood-pressure',
@@ -7,20 +10,28 @@ import { BloodPressure, BloodPressureService } from './blood-pressure.service';
     providers: [ BloodPressureService ],
     styles: ['.error {color: red;}']
   })
-export class BloodPressureComponent implements OnInit {
-    displayedColumns=['date', 'systolic', 'diastolic', 'heartrate']
-    
+export class BloodPressureComponent implements OnInit, AfterViewInit {
+
+    dataSource: BloodPressureDatasource;
+
+    displayedColumns=['date', 'systolic', 'diastolic', 'heartrate'];
+
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+
     bloodPressures: BloodPressure[];
+    bloodPressureCount: number;
     model: BloodPressure = new BloodPressure();
     showAddBloodPressurePanel = false;
 
     constructor(private bloodPressureService: BloodPressureService) {
-        this.bloodPressures = [];
+
     };
 
     showBloodPressure(){
-        this.bloodPressureService.getBloodPressure()
-            .subscribe((data: BloodPressure[]) => this.bloodPressures = data)
+      this.dataSource.loadBloodPressures(
+        this.paginator.pageIndex,
+        this.paginator.pageSize
+      );
     }
 
     toogleBloodPressure(){
@@ -37,11 +48,22 @@ export class BloodPressureComponent implements OnInit {
         this.bloodPressureService.saveBloodPressure(data)
             .subscribe(r => {
                 this.showAddBloodPressurePanel = false;
-                this.showBloodPressure();                
+                this.showBloodPressure();
             });
     }
 
     ngOnInit() {
-        this.showBloodPressure();
+      this.bloodPressureService.getBloodPressureCount()
+        .subscribe((data: number) => this.bloodPressureCount = data)
+      this.dataSource = new BloodPressureDatasource (this.bloodPressureService);
+      this.dataSource.loadBloodPressures(0,10);
+    }
+
+    ngAfterViewInit() {
+      this.paginator.page
+          .pipe(
+              tap(() => this.showBloodPressure())
+          )
+          .subscribe();
     }
 }

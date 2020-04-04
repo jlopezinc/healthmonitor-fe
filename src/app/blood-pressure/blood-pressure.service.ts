@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
@@ -16,9 +16,18 @@ export class BloodPressureService {
   constructor(private http: HttpClient) { }
 
   bloodPressureApiUrl = 'https://healthmonitor-be.herokuapp.com/v1/bloodpressure/';
-  
-  getBloodPressure() {
-    return this.http.get<BloodPressure[]>(this.bloodPressureApiUrl)
+
+  getBloodPressure(page: number, pageSize: number) {
+    return this.http.get<BloodPressure[]>(this.bloodPressureApiUrl,
+      {params: new HttpParams()
+      .set('page', page + '')
+      .set('pageSize', pageSize + '')
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  getBloodPressureCount() {
+    return this.http.get<Number>(this.bloodPressureApiUrl + "count")
       .pipe(catchError(this.handleError));
   }
 

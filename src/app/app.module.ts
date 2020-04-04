@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatHint } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 import { BloodPressureComponent } from './blood-pressure/blood-pressure.component';
@@ -44,6 +45,7 @@ import { FormsModule }   from '@angular/forms';
     MatListModule,
     MatInputModule,
     MatCardModule,
+    MatPaginatorModule,
     FormsModule
   ],
   providers: [AccountApiService],
