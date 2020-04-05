@@ -13,10 +13,10 @@ export class AuthService {
   // Create an observable of Auth0 instance of client
   auth0Client$ = (from(
     createAuth0Client({
-      domain: "proud-wood-9027.auth0.com",
-      client_id: "FWiDr2xNsQWr8P8029vMYn5LNj4SthRq",
+      domain: 'proud-wood-9027.auth0.com',
+      client_id: 'FWiDr2xNsQWr8P8029vMYn5LNj4SthRq',
       redirect_uri: `${window.location.origin}`,
-      audience: "https://healthmonitor.jlopezinc.com"
+      audience: 'https://healthmonitor.jlopezinc.com'
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
@@ -115,7 +115,7 @@ export class AuthService {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log out
       client.logout({
-        client_id: "FWiDr2xNsQWr8P8029vMYn5LNj4SthRq",
+        client_id: 'FWiDr2xNsQWr8P8029vMYn5LNj4SthRq',
         returnTo: `${window.location.origin}`
       });
     });

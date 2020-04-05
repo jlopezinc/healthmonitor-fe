@@ -21,7 +21,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AccountApiService } from './auth/account-api.service';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
