@@ -27,11 +27,11 @@ export class BloodPressureService {
   }
 
   getBloodPressureCount() {
-    return this.http.get<Number>(this.bloodPressureApiUrl + "count")
+    return this.http.get<number>(this.bloodPressureApiUrl + 'count')
       .pipe(catchError(this.handleError));
   }
 
-  saveBloodPressure(bloodpressure: BloodPressure){
+  saveBloodPressure(bloodpressure: BloodPressure) {
     return this.http.post(this.bloodPressureApiUrl, bloodpressure)
     .pipe(catchError(this.handleError));
   }
@@ -50,6 +50,6 @@ export class BloodPressureService {
     // return an observable with a user-facing error message
     return throwError(
       'Something bad happened; please try again later.');
-  };
+  }
 }
 

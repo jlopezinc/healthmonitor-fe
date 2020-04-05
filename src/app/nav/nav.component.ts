@@ -20,4 +20,4 @@ export class NavComponent {
 
   constructor(public auth: AuthService, private breakpointObserver: BreakpointObserver) {}
 }
-              
+

@@ -14,7 +14,7 @@ export class BloodPressureComponent implements OnInit, AfterViewInit {
 
     dataSource: BloodPressureDatasource;
 
-    displayedColumns=['date', 'systolic', 'diastolic', 'heartrate'];
+    displayedColumns = ['date', 'systolic', 'diastolic', 'heartrate'];
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -25,26 +25,26 @@ export class BloodPressureComponent implements OnInit, AfterViewInit {
 
     constructor(private bloodPressureService: BloodPressureService) {
 
-    };
+    }
 
-    showBloodPressure(){
+    showBloodPressure() {
       this.dataSource.loadBloodPressures(
         this.paginator.pageIndex,
         this.paginator.pageSize
       );
     }
 
-    toogleBloodPressure(){
+    toogleBloodPressure() {
         this.showAddBloodPressurePanel = !this.showAddBloodPressurePanel;
     }
 
-    saveBloodPressure(){
-        let data : BloodPressure = {
+    saveBloodPressure() {
+        const data: BloodPressure = {
             systolic: this.model.systolic,
             diastolic: this.model.diastolic,
             heartrate: this.model.heartrate,
             createdOn: null
-        }
+        };
         this.bloodPressureService.saveBloodPressure(data)
             .subscribe(r => {
                 this.showAddBloodPressurePanel = false;
@@ -54,9 +54,9 @@ export class BloodPressureComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
       this.bloodPressureService.getBloodPressureCount()
-        .subscribe((data: number) => this.bloodPressureCount = data)
+        .subscribe((data: number) => this.bloodPressureCount = data);
       this.dataSource = new BloodPressureDatasource (this.bloodPressureService);
-      this.dataSource.loadBloodPressures(0,10);
+      this.dataSource.loadBloodPressures(0, 10);
     }
 
     ngAfterViewInit() {
