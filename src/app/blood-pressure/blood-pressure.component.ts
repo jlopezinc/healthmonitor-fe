@@ -32,6 +32,8 @@ export class BloodPressureComponent implements OnInit, AfterViewInit {
         this.paginator.pageIndex,
         this.paginator.pageSize
       );
+      this.bloodPressureService.getBloodPressureCount()
+        .subscribe((data: number) => this.bloodPressureCount = data);
     }
 
     toogleBloodPressure() {
