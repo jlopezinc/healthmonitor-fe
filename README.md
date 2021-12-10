@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a60268d8-b188-4b06-a7c0-c2bd9c396cae/deploy-status)](https://app.netlify.com/sites/healthmonitor/deploys)
+
 # HealthmonitorFe
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
