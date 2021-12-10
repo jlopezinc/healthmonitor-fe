@@ -28,7 +28,6 @@ export class BloodPressureDatasource implements DataSource<BloodPressure> {
     }
 
     connect(collectionViewer: CollectionViewer): Observable<BloodPressure[]> {
-        console.log('Connecting data source');
         return this.bloodPressureSubject.asObservable();
     }
 

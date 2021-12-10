@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from '@auth0/auth0-angular';
+import { AccountApiService } from './auth/account-api.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,16 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private accountApiService: AccountApiService) {}
 
   title = 'healthmonitor-fe';
 
   ngOnInit() {
-    this.auth.localAuthSetup();
-    this.auth.handleAuthCallback();
+    this.auth.isAuthenticated$.subscribe((value) => {
+        if (value === true){
+            this.accountApiService.handleLogin();
+          }
+        }
+      );
   }
 }
