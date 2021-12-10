@@ -111,12 +111,22 @@
               "devServerTarget": "healthmonitor-fe:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "defaultProject": "healthmonitor-fe",
   "cli": {
-    "analytics": "87bee657-07a1-4202-bd9b-55b3198f5d96"
+    "analytics": "87bee657-07a1-4202-bd9b-55b3198f5d96",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
