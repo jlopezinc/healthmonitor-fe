@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment as env } from './../../environments/environment';
 
 export class BloodPressure {
     systolic: number;
@@ -15,7 +16,7 @@ export class BloodPressure {
 export class BloodPressureService {
   constructor(private http: HttpClient) { }
 
-  bloodPressureApiUrl = 'https://healthmonitor-be.herokuapp.com/v1/bloodpressure/';
+  bloodPressureApiUrl = env.serverUrl + '/v1/bloodpressure/';
 
   getBloodPressure(page: number, pageSize: number) {
     return this.http.get<BloodPressure[]>(this.bloodPressureApiUrl,
