@@ -21,13 +21,21 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AccountApiService } from './auth/account-api.service';
 import { FormsModule } from '@angular/forms';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment as env } from '../environments/environment';
 
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { AuthenticationButtonComponent } from './components/authentication-button/authentication-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BloodPressureComponent,
-    NavComponent
+    NavComponent,
+    LoginButtonComponent,
+    LogoutButtonComponent,
+    AuthenticationButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +53,13 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatCardModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    AuthModule.forRoot({
+      ...env.auth,
+      httpInterceptor: {
+        allowedList: [`${env.serverUrl}/v1/*`],
+      },
+    }),
   ],
   providers: [AccountApiService],
   bootstrap: [AppComponent]

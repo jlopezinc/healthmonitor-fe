@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  auth: {
+    domain: 'proud-wood-9027.auth0.com',
+    clientId: 'FWiDr2xNsQWr8P8029vMYn5LNj4SthRq',
+    redirectUri: window.location.origin,
+    audience: 'https://healthmonitor.jlopezinc.com'
+  },
+  serverUrl: 'https://healthmonitor-be.herokuapp.com'
 };
 
 /*
