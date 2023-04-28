@@ -10,7 +10,7 @@ export const environment = {
     redirectUri: window.location.origin,
     audience: 'https://healthmonitor.jlopezinc.com'
   },
-  serverUrl: 'https://healthmonitor-be.herokuapp.com'
+  serverUrl: 'https://healthmonitor-be.jlopezinc.com'
 };
 
 /*
