@@ -1,7 +1,7 @@
 {
   "/v1": {
-    "target": "https://healthmonitor-be.herokuapp.com",
+    "target": "https://healthmonitor-be.jlopezinc.com",
     "secure": true,
-    "changeOrigin": true 
+    "changeOrigin": true
   }
 }
