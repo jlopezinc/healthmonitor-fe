@@ -1,8 +1,8 @@
 export const environment = {
   production: false,
   auth: {
-    domain: 'proud-wood-9027.auth0.com',
-    clientId: 'FWiDr2xNsQWr8P8029vMYn5LNj4SthRq',
+    domain: 'dev-nt5fx60p.eu.auth0.com',
+    clientId: 'hRkhry1HfgpopTDom0KdcXjVxYHea6AK',
     redirectUri: window.location.origin,
     audience: 'https://healthmonitor.jlopezinc.com'
   },
