@@ -6,10 +6,10 @@ import { catchError } from 'rxjs/operators';
 import { environment as env } from './../../environments/environment';
 
 export class BloodPressure {
-    systolic: number;
-    diastolic: number;
-    heartrate: number;
-    createdOn: Date;
+    systolic!: number;
+    diastolic!: number;
+    heartrate!: number;
+    createdOn!: Date | null;
 }
 
 @Injectable()

@@ -6,6 +6,7 @@ import { DOCUMENT } from '@angular/common';
   selector: 'app-logout-button',
   templateUrl: './logout-button.component.html',
   styles: [],
+  standalone: false
 })
 export class LogoutButtonComponent {
   constructor(
@@ -14,6 +15,10 @@ export class LogoutButtonComponent {
   ) {}
 
   logout(): void {
-    this.auth.logout({ returnTo: this.doc.location.origin });
+    this.auth.logout({ 
+      logoutParams: {
+        returnTo: this.doc.location.origin 
+      }
+    });
   }
 }

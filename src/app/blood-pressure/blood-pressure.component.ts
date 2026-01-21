@@ -8,18 +8,19 @@ import { tap } from 'rxjs/operators';
     selector: 'app-blood-pressure',
     templateUrl: './blood-pressure.component.html',
     providers: [ BloodPressureService ],
-    styles: ['.error {color: red;}']
+    styles: ['.error {color: red;}'],
+    standalone: false
   })
 export class BloodPressureComponent implements OnInit, AfterViewInit {
 
-    dataSource: BloodPressureDatasource;
+    dataSource!: BloodPressureDatasource;
 
     displayedColumns = ['date', 'systolic', 'diastolic', 'heartrate'];
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-    bloodPressures: BloodPressure[];
-    bloodPressureCount: number;
+    bloodPressures!: BloodPressure[];
+    bloodPressureCount!: number;
     model: BloodPressure = new BloodPressure();
     showAddBloodPressurePanel = false;
 
