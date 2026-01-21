@@ -49,7 +49,7 @@ export class BloodPressureComponent implements OnInit, AfterViewInit {
             createdOn: null
         };
         this.bloodPressureService.saveBloodPressure(data)
-            .subscribe(r => {
+            .subscribe(() => {
                 this.showAddBloodPressurePanel = false;
                 this.showBloodPressure();
             });

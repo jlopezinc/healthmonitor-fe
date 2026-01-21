@@ -6,14 +6,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AuthService } from '@auth0/auth0-angular';
+import { of } from 'rxjs';
 
 import { NavComponent } from './nav.component';
 
 describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
+  let authServiceSpy: jasmine.SpyObj<AuthService>;
 
   beforeEach(waitForAsync(() => {
+    authServiceSpy = jasmine.createSpyObj('AuthService', ['loginWithRedirect'], {
+      isAuthenticated$: of(false)
+    });
+
     TestBed.configureTestingModule({
       declarations: [NavComponent],
       imports: [
@@ -24,6 +31,9 @@ describe('NavComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
+      ],
+      providers: [
+        { provide: AuthService, useValue: authServiceSpy }
       ]
     }).compileComponents();
   }));
