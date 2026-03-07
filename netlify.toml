@@ -1,0 +1,6 @@
+[build]
+  command = "npm run lint && npm run build:prod"
+  publish = "dist/healthmonitor-fe/browser"
+
+[build.environment]
+  NODE_VERSION = "20.19"

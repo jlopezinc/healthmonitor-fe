@@ -1,5 +1,5 @@
 
-import {CollectionViewer, DataSource} from '@angular/cdk/collections';
+import {DataSource} from '@angular/cdk/collections';
 import {Observable, BehaviorSubject, of} from 'rxjs';
 import {catchError, finalize} from 'rxjs/operators';
 import { BloodPressure, BloodPressureService } from './blood-pressure.service';
@@ -27,11 +27,11 @@ export class BloodPressureDatasource implements DataSource<BloodPressure> {
 
     }
 
-    connect(collectionViewer: CollectionViewer): Observable<BloodPressure[]> {
+    connect(): Observable<BloodPressure[]> {
         return this.bloodPressureSubject.asObservable();
     }
 
-    disconnect(collectionViewer: CollectionViewer): void {
+    disconnect(): void {
         this.bloodPressureSubject.complete();
         this.loadingSubject.complete();
     }

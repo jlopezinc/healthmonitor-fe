@@ -5,6 +5,7 @@ import { AuthService } from '@auth0/auth0-angular';
   selector: 'app-authentication-button',
   templateUrl: './authentication-button.component.html',
   styles: [],
+  standalone: false
 })
 export class AuthenticationButtonComponent {
   constructor(public auth: AuthService) {}
